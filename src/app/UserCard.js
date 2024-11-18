@@ -1,4 +1,4 @@
-"user client"
+"use client"
 function UserCard(props) {
     
     const listUsuarios = props.usuarios.map(usuario=><li key={usuario.nombre}>{usuario.nombre} {usuario.apellido} {usuario.edad}</li>);

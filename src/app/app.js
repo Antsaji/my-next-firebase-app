@@ -1,4 +1,4 @@
-"user client"
+"use client"
 import Card from "./card";
 import UserCard from "./UserCard";
 function App() {
