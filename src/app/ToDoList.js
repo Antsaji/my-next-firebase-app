@@ -2,9 +2,8 @@
 import {useState} from 'react';
 function ToDoList() {
     const [nombreTarea,setNombreTarea]= useState("");
-    const agregarTarea =()=>{
-        
-    }
+    
+    
     const [tareas,setTareas]=useState([
         {id:1,nombre:'Lidiar con el vacío',estado:true},
         {id:2,nombre:'Pelearme con la alba',estado:true},
@@ -14,21 +13,25 @@ function ToDoList() {
         {id:6,nombre:'No limpiar el movil',estado:true},
     ]
     );
+    let nextId=tareas[tareas.length-1].id+1;
+    const agregarTarea =()=>{
+        setTareas([...tareas,{id:nextId,nombre:nombreTarea,estado:true}]);
+    }
     
     function onBorrarTarea(itemBorrar){
-        let listaTemporal=tareas;
-        let indiceBorrar=listaTemporal.findIndex((item)=>itemBorrar.id===item.id);
-        listaTemporal.splice(indiceBorrar,1);
-        console.log(listaTemporal);
-        setTareas(listaTemporal);
+        setTareas(tareas.filter(a=>a.id!==itemBorrar.id))
        
+    }
+    function onChangeTarea(e){
+        setNombreTarea(e.target.value)
     }
      const listTareas= tareas.map(tarea=> <Tarea key={tarea.id} id={tarea.id}nombre={tarea.nombre}
         estado={tarea.estado} onBorrarTarea={onBorrarTarea}
         />);
     return ( 
         <form>
-            <input type="text" placeholder="Insertar terea nueva" value={nombreTarea} onChange={agregarTarea}/>
+            <input type="text" placeholder="Insertar terea nueva" defaultValue={nombreTarea} onChange={e=>onChangeTarea(e)}/>
+            <button type='button' onClick={agregarTarea}>AGREGA</button>
             <ul>
                 {listTareas}
             </ul>
@@ -48,7 +51,7 @@ export function Tarea({id,nombre,estado,onBorrarTarea}) {
         <li>
             <p>{nombre}</p>
             <p>{estado?"Completado":"No completado"}</p>
-            <button onClick={handleClick}>Borrar Tarea</button>
+            <button type='button' onClick={handleClick}>Borrar Tarea</button>
         </li>
      );
 }
