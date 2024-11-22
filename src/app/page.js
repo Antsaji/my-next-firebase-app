@@ -12,6 +12,10 @@ import ToDoList from "./ToDoList";
 import Counter2 from "./Counter2";
 import LoguinControl from "./LoguinControl";
 import ProductStock from "./ProductStock";
+import ContactForm from "./ContactForm";
+import ShoppingList from "./ShoppingList";
+import DropDown from "./DropDown";
+import ImageGallery from "./ImageGallery";
 
 export default function Home() {
   return (
@@ -24,9 +28,20 @@ export default function Home() {
     <ToggleSwitch/>
     <Counter2/>
     <LoguinControl/>
-    <ProductStock inStock= {false}/>*/}
+    <ProductStock inStock= {false}/>
     <ToDoList/>
-
+    <ContactForm/>
+    <ShoppingList list={[{id:1, nombre:"webos"},
+                         {id:2, nombre:"zarchichas"},
+                         {id:3, nombre:"sal"},
+                         {id:4, nombre:"entra"},
+                         {id:5, nombre:"pape de culo"}]}/>
+    <DropDown list={[{id:1, nombre:"Opcion1"},
+                         {id:2, nombre:"Opcion2"},
+                         {id:3, nombre:"Opcion3"},
+                         {id:4, nombre:"Opcion4"},
+                         {id:5, nombre:"Opcion5"}]}/>*/}
+    <ImageGallery/>
     </>
   );
 }
